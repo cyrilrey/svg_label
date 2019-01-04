@@ -1,0 +1,57 @@
+
+
+
+{% extends "index.html" %}
+
+{% block title %}choose{% endblock %}
+
+
+{% block step1%}active {% endblock %}
+{% block step2%}disabled {% endblock %}
+{% block step3%}disabled {% endblock %}
+
+
+
+{% block top %}
+
+	<h2 class="ui header">
+	  <i class="edit icon"></i>
+	  <div class="content">
+	   Choose 
+	  </div>
+	</h2>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+<div class="ui four column stackable grid">
+
+
+	{% for label in labels %}
+  		<div class="column">
+  		<div class="ui segment">
+			<a href="edit?labelsvg={{label}}">
+				<img src="label/{{label}}" alt="{{label}}"	class="preview ui small centered image">
+			</a>
+		</div>
+  		</div>
+
+    	{% endfor %}
+
+</div>
+
+
+
+
+
+
+{% endblock %}
+
+
+
+
+

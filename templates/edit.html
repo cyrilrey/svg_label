@@ -1,0 +1,73 @@
+
+
+
+{% extends "index.html" %}
+
+{% block title %}Edit{% endblock %}
+
+
+{% block step1%}completed {% endblock %}
+{% block step2%}active {% endblock %}
+{% block step3%}disabled {% endblock %}
+
+
+
+{% block top %}
+
+	<h2 class="ui header">
+	  <i class="edit icon"></i>
+	  <div class="content">
+	    Edit
+	  </div>
+	</h2>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<form class="ui form" action="preview" method="post">
+
+	<div class="ui two column stackable grid">
+		<div class="column">
+			<div class="ui segment">
+
+				  <!--button class="ui button" >back</button-->
+				  <!--button class="ui button" >clear</button-->
+
+				  
+				  <div class="field">	<label>txt1</label>	<input type="text" name="txt1" value="{{session['txt1']}}">	  </div>
+				  <div class="field">	<label>txt2</label>	<input type="text" name="txt2" value="{{session['txt2']}}">	  </div>
+				  <div class="field">	<label>txt3</label>	<input type="text" name="txt3" value="{{session['txt3']}}">	  </div>
+				  <div class="field">	<label>txt4</label>	<input type="text" name="txt4" value="{{session['txt4']}}">	  </div>
+
+
+			</div>
+		</div>
+
+
+
+		<div class="column">
+			<div class="ui segment">
+
+				<button class="ui button" type="submit">preview</button>
+				<br><br>
+				<img src="label/{{session['labelsvg']}}" alt="{{label}}"	class="preview ui small image spaced">
+
+
+			</div>
+		</div>
+
+	</div>
+
+
+</form>
+
+
+
+{% endblock %}
+
+
+
+

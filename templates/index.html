@@ -1,0 +1,127 @@
+<html>
+	<head>
+		
+		<title>{% block title %}{% endblock %} - My Webpage</title>
+
+		<link href="Semantic-UI-CSS/semantic.min.css" rel="stylesheet" type="text/css">
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="Semantic-UI-CSS/semantic.min.js"></script>
+
+		<script language='javascript'>
+			// accordion setup
+			$(document).ready(function(){
+				$('.ui.accordion').accordion();
+		     	});
+			
+			// message
+			$('.message .close')
+			  .on('click', function() {
+			    $(this)
+			      .closest('.message')
+			      .transition('fade')
+			    ;
+			  })
+			;
+
+		</script>
+
+		<style>
+
+			img.preview {
+			  border-radius: 25px;
+			  border: 2px solid #AAAAAA;
+			  padding: 20px;
+			}
+
+
+		</style>
+
+
+
+		<!--header-->
+		{% block header %}
+	
+		{% endblock %}
+
+
+	</head>
+	
+	
+	
+	<body>
+	<div class="ui container">
+
+		<!--header-->
+		<center>
+		<h1 class="ui header">
+		  <i class="print icon"></i>
+		  <div class="content">
+		    Pos/EPS Label printer
+		    <div class="sub header">Print label and sticker from that web page</div>
+		  </div>
+		</h1>
+		</center>
+
+		<!--nav-->
+		<center>
+		<div class="ui center aligned steps">
+
+		  <div class="{% block step1 %}{% endblock %}step">
+		    <i class="file image outline icon"></i>
+		    <div class="content">
+			<a href="choose">
+		      		<div class="title">Choose</div>
+		      		<div class="description">Choose label format</div>
+		    	</a>
+		    </div>
+		  </div>
+
+		  <div class="{% block step2 %}disabled {% endblock %}step">
+		    <i class="edit icon"></i>
+		    <div class="content">
+			<a href="edit">
+		      		<div class="title">Edit</div>
+		      		<div class="description">Configure your label</div>
+		    	</a>
+		    </div>
+		  </div>
+
+		  <div class="{% block step3 %}disabled {% endblock %}step">
+		    <i class="info icon"></i>
+		    <div class="content">
+			<a href="preview">
+		      		<div class="title">Preview</div>
+		      		<div class="description">Check if it is ok</div>
+		    	</a>
+		    </div>
+		  </div>
+		</div>
+		</center>
+
+		<!--top-->
+		{% block top %}
+	
+		{% endblock %}
+
+
+		<!--content-->
+		{% block content %}
+		
+		<br>
+		<a href="/edit">
+			<button class="ui primary button">Start</button>
+		</a>
+
+
+		{% endblock %}
+
+
+		<!--bottom-->
+		{% block bottom %}
+	
+		{% endblock %}
+
+	</div>
+	</body>
+
+</html>

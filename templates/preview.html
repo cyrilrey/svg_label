@@ -1,0 +1,56 @@
+
+
+
+{% extends "index.html" %}
+
+{% block title %}choose{% endblock %}
+
+
+
+{% block step1%}completed {% endblock %}
+{% block step2%}completed {% endblock %}
+{% block step3%}active {% endblock %}
+
+{% block top %}
+
+		<div class="ui message">
+		  <i class="close icon"></i>
+		  <div class="header">Printed</div>
+		  <p>Label has been sent to thermal label printer</p>
+		</div>
+
+	<h2 class="ui header">
+	  <i class="edit icon"></i>
+	  <div class="content">
+	  Preview 
+	  </div>
+	</h2>
+
+{% endblock %}
+
+
+{% block content %}
+
+	<form class="ui form" action="print" method="post">
+		<button class="ui button" type="submit">print</button>
+	</form>
+
+
+	<div class="center">
+		  <img src="prev_img" class="preview" alt="preview">
+	</div>			    
+
+{{session['labelsvg']}}
+{{session['txt1']}}
+{{session['txt2']}}
+{{session['txt3']}}
+{{session['txt4']}}
+
+
+{% endblock %}
+
+
+
+
+
+
