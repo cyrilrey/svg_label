@@ -13,6 +13,9 @@ Basically,
 4) Label is sent to your termal printer trought USB
 
 
+Note : at that time project is not yet fully fonctional , but it it going to soon.
+
+
 ## Prerequisites
 
 python
@@ -60,8 +63,9 @@ sudo usermod -a -G lp user
 
 1) Clone Gith hub respository
 2) configure you printer usb port as above
-3) ./weblabel/run.sh
-4) open http://localhost:5000 within your favorite browser
+3) Download Semantic-UI-CSS into Semantic-UI-CSS sub folder
+5) ./weblabel/run.sh
+6) open http://localhost:5000 within your favorite browser
 
 
 ## Know issue
