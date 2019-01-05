@@ -2,15 +2,16 @@
 
 You like labelling everything and with you ribbon printer Dymo or or Ptouch? If yes that project may interest you.
 
-With a dirty cheap ESC/POS label printer and a raspbery pi, you now would be able to print from a web interafece.
+With with almost dirty cheap ESC/POS compatible label printer and a raspbery pi, you now would be able to print your labels from web interafece.
 
-Basically,
+Basically you will ,
+
 1. Open web page from you smatphone or computer
-2. You choose a template trought an SVG template collection (adresse, jam , note, on line text, two line texte, network, company logo ...) 
-3. You enter custom text within an html form. 
+2. Choose a template trought an SVG template collection (adresse, jam , note, on line text, two line texte, network, company logo ...) 
+3. Enter custom text within an html form. 
    - texts are remplaced into your SVG file with a template engine
-4. You click print on preview windows
-5. Label is sent to your termal printer trought USB
+4. Click print on preview windows
+5. Your label is sent to your termal printer trought USB
 
 
 Note : at that time project is not yet fully fonctional (see roadmap below), but it it going to be usable soon.
@@ -26,6 +27,15 @@ Note : at that time project is not yet fully fonctional (see roadmap below), but
 python
 pip install Flask
 pip install python-escpos
+
+## Getting Started
+
+1. Clone Gith hub respository.
+2. Configure you printer usb port as below.
+3. Download Semantic-UI-CSS into Semantic-UI-CSS sub folder.
+5. ./weblabel/run.sh
+6. Open http://localhost:5000 within your favorite browser.
+
 
 ## Printer usb port setup
 
@@ -53,42 +63,32 @@ Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 
 Third and last value can be found with **lsusb -vvv -d 4b43:3538**
 ```
-lsusb -vvv -d 4b43:3538 |grep EndpointAddress
+$ lsusb -vvv -d 4b43:3538 |grep EndpointAddress
 ```
 
-Be sure your user have access to usb port :
+then, be sure your user have access to usb port :
 ```
-sudo usermod -a -G dialout user
-sudo usermod -a -G tty user
-sudo usermod -a -G lp user
+$ sudo usermod -a -G dialout user
+$ sudo usermod -a -G tty user
+$ sudo usermod -a -G lp user
 ```
-
-
-## Getting Started
-
-1. Clone Gith hub respository
-2. configure you printer usb port as above
-3. Download Semantic-UI-CSS into Semantic-UI-CSS sub folder
-5. ./weblabel/run.sh
-6. open http://localhost:5000 within your favorite browser
-
 
 ## Road map
 
 Work in progress :
 - [ ] Achieve function for replacing text within SVG, with jinja2 template engine
-- [ ] Convert SVG into PNG according to printer withd pixel resolution
+- [ ] Convert SVG into PNG according to printer print width resolution.
 
 Short :
 - [ ] Add à menu bare
-- [ ] Buttons for manual paper moving. That mean printing a blank image 1px, 5px or 10px height on press.
+- [ ] Buttons for manual paper alignement. That mean printing a blank image 1px(fine), 5px(normal) or 10px(large) height on button press.
 
 Medium :
-- [ ] Better label size managment. Actually it works, but label size and intervall are "hard coded" within SVG template. So better freedom
-- [ ] Printer and label's roll setup configuration page.
-- [ ] Label roll drop down selection
-- [ ] SVG template création guide
-- [ ] SVG upload page
+- [ ] Better label size managment. Actually it works, but label height and intervall are "hard coded" within SVG template.
+- [ ] Printer configuration page. Actually it works, but printer horizontal resolution is "hard coded".
+- [ ] Label roll configuration page and drop down selection.
+- [ ] SVG template création guideline.
+- [ ] SVG upload page.
 
 
 ## Know issue
@@ -101,6 +101,9 @@ With inskape : flowed text won't show up on the internet. Convert back to regula
 * **Rey Cyril** - *Initial work* - [cyrilrey](https://github.com/cyrilrey)
 
 See also the list of [contributors](https://github.com/cyrilrey/weblabel/graphs/contributors) who participated in this project.
+
+Help from people with opinions and common sens are welcome.
+
 
 ## License
 
