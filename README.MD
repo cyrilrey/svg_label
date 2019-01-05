@@ -1,26 +1,25 @@
 # WebLabel
 
-You like labelling everything and with you ribbon printer Dymo or or Ptouch? If yes that project may interest you.
+You like labelling everything and with you ribbon printer Dymo or or Ptouch? But your are bored of being caught with overpriced proprietary supplies. If yes, grab you freedom with that project.
 
-With with almost dirty cheap ESC/POS compatible label printer and a raspbery pi, you now would be able to print your labels from web interafece.
+With with almost dirty cheap ESC/POS compatible label printer and a raspbery pi, you now would be able to easily print your labels from web interafece.
 
 Basically you will ,
 
 1. Open web page from you smatphone or computer
 2. Choose a template trought an SVG template collection (adresse, jam , note, on line text, two line texte, network, company logo ...) 
 3. Enter custom text within an html form. 
-   - texts are remplaced into your SVG file with a template engine
+   - texts are remplaced into selected SVG file with a template engine
 4. Click print on preview windows
 5. Your label is sent to your termal printer trought USB
-
 
 **Note : at that time project is not yet fully fonctional (see roadmap below), but it it going to be usable soon.**
 
 ## Scrennshoot
 
-- Choose [desktop](/doc/Choose.png)  [mobile](/doc/Choose_mobile.png)
-- Edit [desktop](/doc/Edit.png)  [mobile](/doc/Edit_mobile.png)
-- Preview [desktop](/doc/Preview.png)  [mobile](/doc/Preview_mobile.png)
+- Choose       [desktop](/doc/Choose.png)    [mobile](/doc/Choose_mobile.png)
+- Edit         [desktop](/doc/Edit.png)      [mobile](/doc/Edit_mobile.png)
+- Preview      [desktop](/doc/Preview.png)   [mobile](/doc/Preview_mobile.png)
 
 ## Prerequisites
 ```
@@ -93,7 +92,7 @@ Medium :
 
 Long :
 - [ ] Dynamic text input formulare according SVG File.
-- [ ] Web [SVG editor interface] (https://github.com/SVG-Edit/svgedit)
+- [ ] Allow editing SVG template with a web SVG editor. (https://github.com/SVG-Edit/svgedit)
 
 ## Know issue
 
@@ -116,17 +115,9 @@ This project is licensed under the GPL3 License - see the [LICENSE.md](LICENSE.m
 ## Tested with
 
 GOOJPRT PT-210 from Aliexpress
-
+Should work with almost all compatible POS thermal printer.
 
 ## Label paper
 
-Label 57*20 (https://www.aliexpress.com/item/Direct-Thermal-Label-Stickers-10-Rolls-OD-40MM-Sutible-for-58mm-Bluetooth-Thermal-Labeller-Printer-57x40/32883774593.html?spm=a2g0s.9042311.0.0.27424c4dzTvZo8)
+[Label 57*20mm](https://www.aliexpress.com/item/Direct-Thermal-Label-Stickers-10-Rolls-OD-40MM-Sutible-for-58mm-Bluetooth-Thermal-Labeller-Printer-57x40/32883774593.html?spm=a2g0s.9042311.0.0.27424c4dzTvZo8)
 
-
-
-
-
-
-
-
-#
