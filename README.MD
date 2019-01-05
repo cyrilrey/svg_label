@@ -18,7 +18,7 @@ Note : at that time project is not yet fully fonctional (see roadmap below), but
 ## Scrennshoot
 
 - Choose [desktop](/doc/Choose.png)  [mobile](/doc/Choose_mobile.png)
-- Edit [desktop](/doc/Edit.png)  [mobile](/doc/Edit.png)
+- Edit [desktop](/doc/Edit.png)  [mobile](/doc/Edit_mobile.png)
 - Preview [desktop](/doc/Preview.png)  [mobile](/doc/Preview_mobile.png)
 
 ## Prerequisites
