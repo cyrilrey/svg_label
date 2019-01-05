@@ -13,7 +13,7 @@ Basically you will ,
 3. Enter custom text within an html form. 
    - texts are remplaced into selected SVG file with a template engine
 4. Click print on preview windows
-5. Your label is sent to your termal printer trought USB
+   - Your label is sent to your termal printer trought USB
 
 **Note : at that time project is not yet fully fonctional (see roadmap below), but it it going to be usable soon.**
 
