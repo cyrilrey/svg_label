@@ -23,10 +23,11 @@ Note : at that time project is not yet fully fonctional (see roadmap below), but
 - Preview [desktop](/doc/Preview.png)  [mobile](/doc/Preview_mobile.png)
 
 ## Prerequisites
-
-python
-pip install Flask
-pip install python-escpos
+```
+$ sudo apt-get install python
+$ pip install Flask
+$ pip install python-escpos
+```
 
 ## Getting Started
 
