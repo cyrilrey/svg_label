@@ -1,3 +1,5 @@
+> Sorry, I do my best, but English is not my mother tongue. Is there somebody helpfull for making text below more readable?
+
 # WebLabel
 
 You like labelling everything and with you ribbon printer Dymo or or Ptouch? But your are bored of being caught with overpriced proprietary supplies. If yes, grab you freedom with that project.
@@ -17,9 +19,9 @@ Basically you will ,
 
 ## Scrennshoot
 
-- Choose       [desktop](/doc/Choose.png)    [mobile](/doc/Choose_mobile.png)
-- Edit         [desktop](/doc/Edit.png)      [mobile](/doc/Edit_mobile.png)
-- Preview      [desktop](/doc/Preview.png)   [mobile](/doc/Preview_mobile.png)
+- Choose template      [desktop](/doc/Choose.png)    [mobile](/doc/Choose_mobile.png)
+- Edit text            [desktop](/doc/Edit.png)      [mobile](/doc/Edit_mobile.png)
+- Preview+print        [desktop](/doc/Preview.png)   [mobile](/doc/Preview_mobile.png)
 
 ## Prerequisites
 ```
@@ -43,22 +45,17 @@ At the moment, you have to setup you printer manually.
 That mean filling correponding value within weblabel.py : 
 
 ```
- p = Usb(0x4b43, 0x3538,0 ,0xB2, 0x02  )
-
+ p = Usb(0x4b43, 0x3538,0 ,0xB2, 0x02  ) 
 ```
 
 First and second value can be found with **lsusb** command before and after connection you printer.  
 ```
 $ lsusb
-Bus 001 Device 002: ID 8087:8000 Intel Corp. 
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-Bus 002 Device 009: ID 0cf3:3004 Atheros Communications, Inc. AR3012 Bluetooth 4.0
+...
 Bus 002 Device 078: ID 18f8:0f97  
 Bus 002 Device 077: ID 4b43:3538   <--that one 
 Bus 002 Device 076: ID 05af:1012 Jing-Mold Enterprise Co., Ltd 
-Bus 002 Device 075: ID 2001:f103 D-Link Corp. DUB-H7 7-port USB 2.0 hub
-Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+...
 ```
 
 Third and last value can be found with **lsusb -vvv -d 4b43:3538**
@@ -66,7 +63,7 @@ Third and last value can be found with **lsusb -vvv -d 4b43:3538**
 $ lsusb -vvv -d 4b43:3538 |grep EndpointAddress
 ```
 
-then, be sure your user have access to usb port :
+Also, be sure your user have access to usb port :
 ```
 $ sudo usermod -a -G dialout user
 $ sudo usermod -a -G tty user
@@ -76,15 +73,15 @@ $ sudo usermod -a -G lp user
 ## Road map
 
 Work in progress :
-- [ ] Achieve function for replacing text within SVG, with jinja2 template engine
+- [ ] Achieve function for replacing text within SVG, with jinja2 template engine.
 - [ ] Convert SVG into PNG according to printer print width resolution.
 
 Short :
-- [ ] Add à menu bare
+- [ ] Add a menu bare for advanced fucntion and configuration.
 - [ ] Buttons for manual paper alignement. That mean printing a blank image 1px(fine), 5px(normal) or 10px(large) height on button press.
 
 Medium :
-- [ ] Better label size managment. Actually it works, but label height and intervall are "hard coded" within SVG template.
+- [ ] Better label size managment. Actually it works, but label height and intervall are "hard coded" within SVG. template.
 - [ ] Printer configuration page. Actually it works, but printer horizontal resolution is "hard coded".
 - [ ] Label roll configuration page and drop down selection.
 - [ ] SVG template création guideline.
@@ -97,7 +94,6 @@ Long :
 ## Know issue
 
 With inskape : flowed text won't show up on the internet. Convert back to regular text: Text menu > Convert to text. You might have to realign. Flowed text is created when you drag out a selection box before you type. To create regular text from the start, just click once and start typing. You can align/format afterwards using snapping and guides, if necessary.
-
 
 ## Authors
 
