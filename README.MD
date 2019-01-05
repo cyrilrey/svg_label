@@ -91,6 +91,9 @@ Medium :
 - [ ] SVG template création guideline.
 - [ ] SVG upload page.
 
+Long :
+- [ ] Dynamic text input formulare according SVG File.
+- [ ] Web [SVG editor interface] (https://github.com/SVG-Edit/svgedit)
 
 ## Know issue
 
