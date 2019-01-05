@@ -14,7 +14,7 @@ Basically you will ,
 5. Your label is sent to your termal printer trought USB
 
 
-Note : at that time project is not yet fully fonctional (see roadmap below), but it it going to be usable soon.
+**Note : at that time project is not yet fully fonctional (see roadmap below), but it it going to be usable soon.**
 
 ## Scrennshoot
 
