@@ -35,7 +35,7 @@ $ pip install python-escpos
 1. Clone Gith hub respository.
 2. Configure you printer usb port as below.
 3. Download Semantic-UI-CSS into Semantic-UI-CSS sub folder.
-5. ./weblabel/run.sh
+5. Start web app with ./weblabel/run.sh
 6. Open http://localhost:5000 within your favorite browser.
 
 
@@ -45,7 +45,7 @@ At the moment, you have to setup you printer manually.
 That mean filling correponding value within weblabel.py : 
 
 ```
- p = Usb(0x4b43, 0x3538,0 ,0xB2, 0x02  ) 
+ p = Usb(0x4b43, 0x3538,0 ,0x82, 0x02  ) 
 ```
 
 First and second value can be found with **lsusb** command before and after connection you printer.  
@@ -58,9 +58,12 @@ Bus 002 Device 076: ID 05af:1012 Jing-Mold Enterprise Co., Ltd
 ...
 ```
 
-Third and last value can be found with **lsusb -vvv -d 4b43:3538**
+Third and last value can be found with :
 ```
-$ lsusb -vvv -d 4b43:3538 |grep EndpointAddress
+lsusb -vvv -d 4b43:3538 |grep bEndpointAddress
+        bEndpointAddress     0x02  EP 2 OUT
+        bEndpointAddress     0x82  EP 2 IN
+        
 ```
 
 Also, be sure your user have access to usb port :
@@ -77,7 +80,7 @@ Work in progress :
 - [ ] Convert SVG into PNG according to printer print width resolution.
 
 Short :
-- [ ] Add a menu bare for advanced fucntion and configuration.
+- [ ] Add a menu bare for advanced function and configuration.
 - [ ] Buttons for manual paper alignement. That mean printing a blank image 1px(fine), 5px(normal) or 10px(large) height on button press.
 
 Medium :
