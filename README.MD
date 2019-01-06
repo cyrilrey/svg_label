@@ -2,9 +2,9 @@
 
 # WebLabel
 
-You like labelling everything and with you ribbon printer Dymo or or Ptouch? But your are bored of being caught with overpriced proprietary supplies. If yes, grab you freedom with that project.
+You like labelling everything and with you ribbon printer Dymo or or Ptouch? But your are bored of being caught with overpriced proprietary supplies. If yes, grab your freedom with that project.
 
-With with almost dirty cheap ESC/POS compatible label printer and a raspbery pi, you now would be able to easily print your labels from web interafece.
+With almost dirty cheap ESC/POS compatible label printer and a raspbery pi, you now would be able to easily print your labels from web interafece.
 
 Basically you will ,
 
