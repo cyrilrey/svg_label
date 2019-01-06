@@ -19,6 +19,7 @@ from escpos.printer import Usb #printer driver
 # create flask app
 app = Flask(__name__)
 app.secret_key = '4334fdsergsFGSDfsdfgSgfdsgsdsresgdsSERE'.encode('utf8')
+app = Flask(__name__, template_folder='label') # folder fror label template
 
 # return static files
 @app.route('/Semantic-UI-CSS/<path:path>')
@@ -35,6 +36,7 @@ def send_label(path):
 def do_index():
    return redirect(url_for('do_choose'))
    #return render_template('index.html')
+
 
 
 # choose page
@@ -65,14 +67,20 @@ def do_preview():
 
     return render_template('preview.html')
 
-# preview image
-@app.route('/prev_img')
+
+
+
+# return svg image
+@app.route('/prev_img_svg')
 def send_preview_img():
-   return send_file(filename_or_fp='img.png',mimetype='image/png')
+
+	render_template(session['labelsvg'])
+
+   #return send_file(filename_or_fp='img.png',mimetype='image/png')
 
 
-#print
-@app.route('/print', methods=['POST'])
+#print image
+@app.route('/print')
 def do_print():
    
     #config printer

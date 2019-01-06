@@ -13,12 +13,6 @@
 
 {% block top %}
 
-		<div class="ui message">
-		  <i class="close icon"></i>
-		  <div class="header">Printed</div>
-		  <p>Label has been sent to thermal label printer</p>
-		</div>
-
 	<h2 class="ui header">
 	  <i class="edit icon"></i>
 	  <div class="content">
@@ -31,21 +25,38 @@
 
 {% block content %}
 
-	<form class="ui form" action="print" method="post">
-		<button class="ui button" type="submit">print</button>
-	</form>
 
+<div class="ui two column stackable grid">
+<div class="stretched row">
+	<div class="column">
+		<div class="ui segment">
 
-	<div class="center">
-		  <img src="prev_img" class="preview" alt="preview">
-	</div>			    
+			<a href="edit"><button class="ui button">back to edit</button></a>
+			<a href="print"><button class="ui button">print</button></a>
+			
+			<div>
+			Template = {{session['labelsvg']}}<br>
+			Text 1 = {{session['txt1']}}<br>
+			Text 2 = {{session['txt2']}}<br>
+			Text 3 = {{session['txt3']}}<br>
+			Text 4 = {{session['txt4']}}<br>
+			</div>
+		
+		</div>
+	</div>
+    
+	<div class="column">
+		<div class="ui segment">
+		
+			<div class="center">
+				  <img src="prev_img" class="preview" alt="preview">
+			</div>	
+	
+		</div>
+	</div>
 
-{{session['labelsvg']}}
-{{session['txt1']}}
-{{session['txt2']}}
-{{session['txt3']}}
-{{session['txt4']}}
-
+</div>
+</div>
 
 {% endblock %}
 
