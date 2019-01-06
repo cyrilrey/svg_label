@@ -2,6 +2,7 @@
 
 #import
 import os #global
+import StringIO #for sending svg
 from flask import (  #web framework
     Flask,
     render_template,
@@ -12,6 +13,7 @@ from flask import (  #web framework
     url_for,
     request,
     session,
+	Response,
 )
 from escpos.printer import Usb #printer driver
 
@@ -72,12 +74,11 @@ def do_preview():
 # return svg image
 @app.route('/prev_img_svg')
 def send_preview_img():
+	#label template engine
+	session['svglabel'] = render_template("labels/"+session['labelsvg'],txt1 =session['txt1'], txt2 =session['txt2'],txt3 =session['txt3'],txt4 =session['txt4'],)
+	return Response(session['svglabel'],mimetype='image/svg+xml')
 
-	return render_template("labels/"+session['labelsvg'],txt1 =session['txt1'], txt2 =session['txt2'],txt3 =session['txt3'],txt4 =session['txt4'],)
-
-	#return send_file(filename_or_fp='img.png',mimetype='image/png')
-	#return send_file(svg_io, mimetype='image/svg+xml')
-
+	
 #print image
 @app.route('/print')
 def do_print():

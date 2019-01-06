@@ -76,8 +76,9 @@ $ sudo usermod -a -G lp user
 ## Road map
 
 Work in progress :
-- [ ] Achieve function for replacing text within SVG, with jinja2 template engine.
+- [x] Achieve function for replacing text within SVG, with jinja2 template engine.
 - [ ] Convert SVG into PNG according to printer print width resolution.
+- [ ] Make a small advertising video
 
 Short :
 - [ ] Add a menu bare for advanced function and configuration.
