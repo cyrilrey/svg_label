@@ -2,7 +2,7 @@
 
 #import
 import os #global
-import StringIO #for sending svg
+from StringIO import StringIO #some kind of temp file storage
 from flask import (  #web framework
     Flask,
     render_template,
@@ -13,10 +13,10 @@ from flask import (  #web framework
     url_for,
     request,
     session,
-	Response,
+    Response,
 )
 from escpos.printer import Usb #printer driver
-
+from cairosvg import svg2png    #svg to bitmap
 
 # create flask app
 app = Flask(__name__)
@@ -49,6 +49,7 @@ def do_choose():
 # select page
 @app.route('/edit', methods=['GET'])
 def do_edit():
+    
     try:
         session['labelsvg'] = request.args['labelsvg']
     except Exception as e:
@@ -92,10 +93,12 @@ def do_print():
     #   sudo usermod -a -G lp user
     #   ls -la /dev/usb/
 
-   
+
+    pngfile = StringIO() #temp file
+    pngbuffer = svg2png(bytestring=session['svglabel'].decode('utf-8').encode('ascii'), dpi=171, write_to=pngfile) #SVG to PNG
 
     # image = 384 x 175  -- print area =  384 x 154 
-    p.image("img.png")
+    p.image(pngfile) #PNG to printer
 
-    return render_template('index.html')
+    return render_template('preview.html')
 
