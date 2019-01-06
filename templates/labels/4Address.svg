@@ -37,8 +37,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="4"
-     inkscape:cx="45.184647"
-     inkscape:cy="16.648648"
+     inkscape:cx="3.684647"
+     inkscape:cy="15.648648"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -66,7 +66,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -156,7 +156,7 @@
            y="285.93561"
            style="font-size:4.23333311px;text-align:start;text-anchor:start;stroke-width:1px"
            id="tspan830-7-7"
-           dx="0 0 0 0 0 0 0 0 0 0 0">{{ txt2 }}</tspan></tspan></text>
+           dx="0 0 0 0 0 0 0 0 0 0 0">{{ txt3 }}</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:4.23333311px;line-height:94.69999671%;font-family:sans-serif;text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;opacity:0.98000004;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -173,6 +173,6 @@
            y="290.76831"
            style="font-size:4.23333311px;text-align:start;text-anchor:start;stroke-width:1px"
            id="tspan830-7-3"
-           dx="0 0 0 0 0 0 0 0 0 0 0">{{ txt2 }}</tspan></tspan></text>
+           dx="0 0 0 0 0 0 0 0 0 0 0">{{ txt4 }}</tspan></tspan></text>
   </g>
 </svg>

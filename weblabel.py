@@ -19,30 +19,29 @@ from escpos.printer import Usb #printer driver
 # create flask app
 app = Flask(__name__)
 app.secret_key = '4334fdsergsFGSDfsdfgSgfdsgsdsresgdsSERE'.encode('utf8')
-app = Flask(__name__, template_folder='label') # folder fror label template
 
-# return static files
+
+# return css static files
 @app.route('/Semantic-UI-CSS/<path:path>')
 def send_js(path):
     return send_from_directory('Semantic-UI-CSS', path)
 
-# return label collection 
-@app.route('/label/<path:path>')
+# return a label svg template from collection 
+@app.route('/svgtemplate/<path:path>')
 def send_label(path):
-    return send_from_directory('label', path)
+    return send_from_directory('templates/labels', path)
+
 
 # index page
 @app.route('/')
 def do_index():
-   return redirect(url_for('do_choose'))
-   #return render_template('index.html')
-
+   return redirect(url_for('do_choose')) #redirect to choose
 
 
 # choose page
 @app.route('/choose')
 def do_choose():
-    labels = os.listdir('label') #read all files
+    labels = os.listdir('templates/labels') #read all files
     return render_template('choose.html', labels = labels)
 
 # select page
@@ -74,10 +73,10 @@ def do_preview():
 @app.route('/prev_img_svg')
 def send_preview_img():
 
-	render_template(session['labelsvg'])
+	return render_template("labels/"+session['labelsvg'],txt1 =session['txt1'], txt2 =session['txt2'],txt3 =session['txt3'],txt4 =session['txt4'],)
 
-   #return send_file(filename_or_fp='img.png',mimetype='image/png')
-
+	#return send_file(filename_or_fp='img.png',mimetype='image/png')
+	#return send_file(svg_io, mimetype='image/svg+xml')
 
 #print image
 @app.route('/print')
