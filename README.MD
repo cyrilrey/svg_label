@@ -19,6 +19,8 @@ Basically you will ,
 
 ## Scrennshoot
 
+- [Architecture](/doc/architecture.png)
+
 - Choose template      [desktop](/doc/Choose.png)    [mobile](/doc/Choose_mobile.png)
 - Edit text            [desktop](/doc/Edit.png)      [mobile](/doc/Edit_mobile.png)
 - Preview+print        [desktop](/doc/Preview.png)   [mobile](/doc/Preview_mobile.png)

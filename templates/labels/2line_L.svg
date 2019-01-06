@@ -37,8 +37,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.8284271"
-     inkscape:cx="83.967804"
-     inkscape:cy="-1.8238346"
+     inkscape:cx="19.97464"
+     inkscape:cy="-3.2380482"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -66,7 +66,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -139,6 +139,6 @@
            y="291.53741"
            style="font-size:11.28888893px;stroke-width:1px"
            id="tspan830-9"
-           dx="0 0 0 0 0 0 0 0 0 0 0">{{ txt1 }}</tspan></tspan></text>
+           dx="0 0 0 0 0 0 0 0 0 0 0">{{ txt2 }}</tspan></tspan></text>
   </g>
 </svg>
