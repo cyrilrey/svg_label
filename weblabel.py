@@ -67,7 +67,7 @@ def do_preview():
     session['txt3'] = request.form['txt3']
     session['txt4'] = request.form['txt4']
 
-    return render_template('preview.html')
+    return render_template('edit.html')
 
 
 
@@ -100,5 +100,5 @@ def do_print():
     # image = 384 x 175  -- print area =  384 x 154 
     p.image(pngfile) #PNG to printer
 
-    return render_template('preview.html')
+    return render_template('edit.html')
 

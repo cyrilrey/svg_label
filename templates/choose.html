@@ -15,7 +15,7 @@
 {% block top %}
 
 	<h2 class="ui header">
-	  <i class="edit icon"></i>
+	  <i class="file image outline icon"></i>
 	  <div class="content">
 	   Choose 
 	  </div>
@@ -28,20 +28,19 @@
 
 
 
-<div class="ui four column stackable grid">
-<div class="stretched row">
+<div class="ui stackable grid">
 
 	{% for label in labels %}
-  		<div class="column">
+  		<div class="four wide column">
   		<div class="ui segment">
 			<a href="edit?labelsvg={{label}}">
-				<img src="svgtemplate/{{label}}" alt="{{label}}"	class="preview ui small centered image">
+				<div class="ui bottom attached label">{{label}}</div>
+				<img src="svgtemplate/{{label}}" alt="{{label}}"	class="ui fluid bordered rounded image">
 			</a>
 		</div>
   		</div>
 
     	{% endfor %}
-</div>
 </div>
 
 

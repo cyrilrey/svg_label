@@ -27,23 +27,51 @@
 
 {% block content %}
 
-<form class="ui form" action="preview" method="post">
 
 	<div class="ui two column stackable grid">
 	<div class="stretched row">
 
 		<div class="column">
 			<div class="ui segment">
+				
+				<div class="ui top attached black label"><h2>Edit</h2></div><br>
 
 				  <!--button class="ui button" >back</button-->
 				  <!--button class="ui button" >clear</button-->
 
-				  
-				  <div class="field">	<label>txt1</label>	<input type="text" name="txt1" value="{{session['txt1']}}">	  </div>
-				  <div class="field">	<label>txt2</label>	<input type="text" name="txt2" value="{{session['txt2']}}">	  </div>
-				  <div class="field">	<label>txt3</label>	<input type="text" name="txt3" value="{{session['txt3']}}">	  </div>
-				  <div class="field">	<label>txt4</label>	<input type="text" name="txt4" value="{{session['txt4']}}">	  </div>
+				<form class="ui big form" action="preview" method="post">
+				    
+                    <div class="fluid field">
+                        <div class="ui labeled input">
+                            <div class="ui label">txt1 : </div>     <input class="ui input" type="text" name="txt1" value="{{session['txt1']}}">	  
+                        </div>
+                    </div>
+                    
+                    <div class="fluid field">
+                        <div class="ui labeled input">
+                            <div class="ui label">txt2 : </div>     <input class="ui input" type="text" name="txt2" value="{{session['txt2']}}">	  
+                        </div>
+                    </div>
+ 
+									
+                    <div class="fluid field">
+                        <div class="ui labeled input">
+                            <div class="ui label">txt3 : </div>     <input class="ui input" type="text" name="txt3" value="{{session['txt3']}}">	  
+                        </div>
+                    </div>
 
+
+                    <div class="fluid field">
+                        <div class="ui labeled input">
+                            <div class="ui label">txt4 : </div>     <input class="ui input" type="text" name="txt4" value="{{session['txt4']}}">	  
+                        </div>
+                    </div>
+				
+					  <button class="ui left attached button"><i class="backward icon"></i>Back</button>
+					  <button class="ui right attached button"><i class="undo icon"></i>Cancel</button>
+					  <button class="ui big right floated black button" type="submit"><i class="eye icon"></i>Update preview</button>
+
+				</form>
 
 			</div>
 		</div>
@@ -53,23 +81,37 @@
 		<div class="column">
 			<div class="ui segment">
 
-				<button class="ui button" type="submit">Goto preview</button>
-				<br><br>
-				<img src="label/{{session['labelsvg']}}" alt="{{label}}"	class="preview ui small image spaced">
-				<br>
-				<div>
-				Template = {{session['labelsvg']}}
-				</div>
+				<div class="ui top attached black label"><h2>Preview [{{session['labelsvg']}}]</h2></div><br>
+				    <a href="prev_img_svg">
+                        <img src="prev_img_svg" class="ui fluid bordered rounded image" alt="preview">
+                     </a>	
+                     <br>
+                      <a href="print">
+					    <button class="ui big right floated black button" type="submit"><i class="print icon"></i></button>
+                      </a>
 
 			</div>
 		</div>
 	
 	</div>
+
+	<div class="column">
+		<div class="ui segment">
+
+            Debug
+				
+			<div>
+			Template = {{session['labelsvg']}}<br>
+			Text 1 = {{session['txt1']}}<br>
+			Text 2 = {{session['txt2']}}<br>
+			Text 3 = {{session['txt3']}}<br>
+			Text 4 = {{session['txt4']}}<br>
+			</div>
+		
+		</div>
 	</div>
 
-
-</form>
-
+	</div>
 
 
 {% endblock %}

@@ -51,6 +51,22 @@
 	<body>
 	<div class="ui container">
 
+		
+		<!--nav-->
+		<div class="ui huge stackable inverted labeled icon menu">
+		  <a class="item" href="choose"><i class="th icon"></i>Browse</a>
+		  <a class="item" href="edit">	<i class="edit icon"></i>Edit</a>
+		  <a class="item" href="print"> <i class="print icon"></i>Print</a>
+		  <div class="right menu">
+		    <a class="item"><i class="angle up icon"></i>1px</a>
+		    <a class="item"><i class="angle double up icon"></i>5px</a>
+		    <a class="item"><i class="angle double up icon"></i>10px</a>
+		    <a class="item"><i class="cogs icon"></i>config</a>
+		  </div>
+		</div>
+
+
+	
 		<!--header-->
 		<center>
 		<h1 class="ui header">
@@ -62,41 +78,6 @@
 		</h1>
 		</center>
 
-		<!--nav-->
-		<center>
-		<div class="ui center aligned steps">
-
-		  <div class="{% block step1 %}{% endblock %}step">
-		    <i class="file image outline icon"></i>
-		    <div class="content">
-			<a href="choose">
-		      		<div class="title">Choose</div>
-		      		<div class="description">Choose label format</div>
-		    	</a>
-		    </div>
-		  </div>
-
-		  <div class="{% block step2 %}disabled {% endblock %}step">
-		    <i class="edit icon"></i>
-		    <div class="content">
-			<a href="edit">
-		      		<div class="title">Edit</div>
-		      		<div class="description">Configure your label</div>
-		    	</a>
-		    </div>
-		  </div>
-
-		  <div class="{% block step3 %}disabled {% endblock %}step">
-		    <i class="info icon"></i>
-		    <div class="content">
-			<a href="preview">
-		      		<div class="title">Preview</div>
-		      		<div class="description">Check if it is ok</div>
-		    	</a>
-		    </div>
-		  </div>
-		</div>
-		</center>
 
 		<!--top-->
 		{% block top %}
