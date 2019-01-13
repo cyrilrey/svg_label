@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 12.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 51448)  -->
+<svg
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    id="Layer_1"
+    style="enable-background:new 0 0 135.704 113.099"
+    space="preserve"
+    sodipodi:docname="pictogramme_camping.svg"
+    viewBox="0 0 135.704 113.099"
+    sodipodi:version="0.32"
+    version="1.1"
+    inkscape:output_extension="org.inkscape.output.svg.inkscape"
+    inkscape:version="0.46"
+    sodipodi:docbase="F:\openclip\svg da inviare"
+  >
+  <sodipodi:namedview
+      id="base"
+      bordercolor="#666666"
+      inkscape:pageshadow="2"
+      inkscape:window-width="1680"
+      pagecolor="#ffffff"
+      inkscape:zoom="1.4142136"
+      inkscape:window-x="0"
+      showgrid="false"
+      borderopacity="1.0"
+      inkscape:current-layer="Layer_1"
+      inkscape:cx="35.237157"
+      inkscape:cy="84.795979"
+      inkscape:window-y="0"
+      inkscape:window-height="973"
+      inkscape:pageopacity="0.0"
+  />
+  <g
+      id="g3293"
+      transform="translate(-.84289 .20716)"
+    >
+    <path
+        id="path2400"
+        d="m61.781 14.688l-1.719 1.374 7.219 11.063-45.469 70.875h33.813v-1-0.219-22.406h26.125v22.406 0.219 1h33.81l-45.466-70.906 6.812-10.906-1.687-1.376-6.531 10.563-6.907-10.687z"
+        style="fill-rule:evenodd;fill:#000000"
+        transform="translate(0 -.0000016991)"
+    />
+    <path
+        id="rect3207"
+        style="stroke:#000000;stroke-width:4.2747;fill:none"
+        d="m25.649 5.3921h86.091c5.08 0 9.16 3.9876 9.16 8.9409v84.019c0 4.948-4.08 8.938-9.16 8.938h-86.091c-5.075 0-9.161-3.99-9.161-8.938v-84.019c0-4.9533 4.086-8.9409 9.161-8.9409z"
+    />
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >Pictogramme Camping</dc:title
+        >
+        <dc:date
+          >2008-08-12T16:56:17</dc:date
+        >
+        <dc:description
+        />
+        <dc:source
+          >https://openclipart.org/detail/18396/pictogramme-camping-by-geant</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >geant</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >camping</rdf:li
+            >
+            <rdf:li
+              >pictogram</rdf:li
+            >
+            <rdf:li
+              >symbol</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>

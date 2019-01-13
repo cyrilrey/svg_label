@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="500"
+   height="450"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="Electricity_warning_sign.svg"
+   viewBox="0 0 468.74998 421.87501">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="14.83083"
+     inkscape:cy="320.91689"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1916"
+     inkscape:window-height="990"
+     inkscape:window-x="2"
+     inkscape:window-y="36"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-630.48717)">
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:1.76997948px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 214.66219,638.29565 6.1221892,1011.7702 c 0,0 -20.9287462,45.8929 30.6456568,37.1891 l 411.100394,3.9563 c 0,0 30.64567,-15.8251 13.45421,-43.5193 L 255.77225,643.83446 c 0,0 -19.43384,-22.94657 -41.11006,-5.53881 z"
+       id="path3000"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#fecb00;fill-opacity:1;stroke:#fecb00;stroke-width:1.76997948px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 233.34858,667.57225 40.505133,1012.5614 426.93949,1011.7702 Z"
+       id="path2996"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#000000;stroke:#000000;stroke-width:1.76997948px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 213.1673,736.41182 42.60495,1.58251 -47.08968,117.89767 74.74553,-41.1455 -34.38295,142.4267 19.43384,-3.95628 -35.87786,52.22318 -22.42366,-60.13578 23.91857,13.45142 5.2322,-94.95115 -76.98791,49.84936 z"
+       id="path2998"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

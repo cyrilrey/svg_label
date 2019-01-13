@@ -23,7 +23,6 @@ Basically you will ,
 
 - Choose template      [desktop](/doc/Choose.png)    [mobile](/doc/Choose_mobile.png)
 - Edit text            [desktop](/doc/Edit.png)      [mobile](/doc/Edit_mobile.png)
-- Preview+print        [desktop](/doc/Preview.png)   [mobile](/doc/Preview_mobile.png)
 
 ## Prerequisites
 ```
@@ -101,6 +100,8 @@ Long :
 ## Know issue
 
 With inskape : flowed text won't show up on the internet. Convert back to regular text: Text menu > Convert to text. You might have to realign. Flowed text is created when you drag out a selection box before you type. To create regular text from the start, just click once and start typing. You can align/format afterwards using snapping and guides, if necessary.
+
+Some old svg with no preserveAspectRatio property dose not work. You shold open with Inkskacpe and choose suitable for 3d print conversion.
 
 ## Authors
 
