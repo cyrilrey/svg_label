@@ -29,6 +29,7 @@ Basically you will ,
 ```
 $ sudo apt-get install python
 $ pip install Flask
+$ pip install flask-sessionstore
 $ pip install python-escpos
 ```
 

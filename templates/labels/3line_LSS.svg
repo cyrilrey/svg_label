@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="Love.svg"
+   sodipodi:docname="3line_LSS.svg"
    inkscape:export-filename="/home/cyril/technique/linux/thermalprinter/img.png"
    inkscape:export-xdpi="171.11578"
    inkscape:export-ydpi="171.11578">
@@ -36,9 +36,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="127.74429"
-     inkscape:cy="18.622356"
+     inkscape:zoom="4"
+     inkscape:cx="46.402934"
+     inkscape:cy="7.5003523"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -91,10 +91,27 @@
            style="-inkscape-font-specification:STIXIntegralsD;font-family:STIXIntegralsD;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal" /></flowRegion><flowPara
          id="flowPara4561" /></flowRoot>    <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.16500001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m -0.52843683,271.05314 0.67819601,-0.006"
+       d="m 3.2900569,271.05314 0.6781957,-0.006"
        id="path4691"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.59227657px;line-height:94.69999671%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="28.385229"
+       y="280.63455"
+       id="text836"
+       transform="scale(1.000845,0.99915571)"><tspan
+         sodipodi:role="line"
+         x="28.385227"
+         y="280.63455"
+         id="tspan834"
+         style="font-size:11.28888893px;stroke-width:1px"><tspan
+           x="28.385229"
+           y="280.63455"
+           style="font-size:11.28888893px;stroke-width:1px"
+           id="tspan830"
+           dx="0 0 0 0 0 0 0 0 0 0 0">{{ txt1 }}</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -108,15 +125,37 @@
          style="stroke-width:0.26458332px" /></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88055563px;line-height:94.69999671%;font-family:'Courier New';-inkscape-font-specification:'Courier New';text-align:start;letter-spacing:0px;word-spacing:0px;text-anchor:start;opacity:0.98000004;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="1.5545841"
-       y="289.867"
-       id="text836-9"
+       style="font-style:normal;font-weight:normal;font-size:10.59227657px;line-height:94.69999671%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;opacity:0.98000004;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="28.346516"
+       y="286.8371"
+       id="text836-6"
        transform="scale(1.000845,0.99915571)"><tspan
          sodipodi:role="line"
-         x="1.5545841"
-         y="289.867"
+         x="28.346516"
+         y="286.8371"
          id="tspan834-2"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.57777786px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';text-align:start;text-anchor:start;stroke-width:1px">LOVE</tspan></text>
+         style="font-size:6.3499999px;stroke-width:1px"><tspan
+           x="28.346516"
+           y="286.8371"
+           style="font-size:6.3499999px;stroke-width:1px"
+           id="tspan830-9"
+           dx="0 0 0 0 0 0 0 0 0 0 0">{{ txt2 }}</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.59227657px;line-height:94.69999671%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;opacity:0.98000004;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="28.288065"
+       y="292.39282"
+       id="text836-6-3"
+       transform="scale(1.000845,0.99915571)"><tspan
+         sodipodi:role="line"
+         x="28.288065"
+         y="292.39282"
+         id="tspan834-2-6"
+         style="font-size:6.3499999px;stroke-width:1px"><tspan
+           x="28.288065"
+           y="292.39282"
+           style="font-size:6.3499999px;stroke-width:1px"
+           id="tspan830-9-7"
+           dx="0 0 0 0 0 0 0 0 0 0 0">{{ txt3 }}</tspan></tspan></text>
   </g>
 </svg>

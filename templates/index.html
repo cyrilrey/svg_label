@@ -58,10 +58,14 @@
 		  <a class="item" href="edit">	<i class="edit icon"></i>Edit</a>
 		  <a class="item" href="print"> <i class="print icon"></i>Print</a>
 		  <div class="right menu">
-		    <a class="item"><i class="angle up icon"></i>1px</a>
-		    <a class="item"><i class="angle double up icon"></i>5px</a>
-		    <a class="item"><i class="angle double up icon"></i>10px</a>
+
+		    <a class="item" onclick="$.ajax({url : 'forward', type : 'GET', data : 'nrpx= 5'}); "> <i class="angle up icon"></i>5px</a>
+		    <a class="item" onclick="$.ajax({url : 'forward', type : 'GET', data : 'nrpx=25'}); "> <i class="angle double up icon"></i>25px</a>
+            <a class="item" onclick="$.ajax({url : 'forward', type : 'GET', data : 'nrpx=50'}); "> <i class="angle double up icon"></i>50px</a>
+
+
 		    <a class="item"><i class="cogs icon"></i>config</a>
+
 		  </div>
 		</div>
 

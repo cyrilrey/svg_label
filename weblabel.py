@@ -15,12 +15,27 @@ from flask import (  #web framework
     session,
     Response,
 )
+from flask_sessionstore import Session #server side storage
 from escpos.printer import Usb #printer driver
 from cairosvg import svg2png    #svg to bitmap
+#from re import re #regex
+
+#config 
+print_width = 384           # image = 384 x 175  -- print area =  384 x 154 
+print_height = 154
+print_spacing = 175-154
 
 # create flask app
+#SESSION_TYPE = 'redis'
+
 app = Flask(__name__)
-app.secret_key = '4334fdsergsFGSDfsdfgSgfdsgsdsresgdsSERE'.encode('utf8')
+app.config.from_object(__name__)
+
+#app.secret_key = '4334fdsergsFGSDfsdfgSgfdsgsdsresgdsSERE'.encode('utf8')
+app.secret_key = os.urandom(24)
+
+app.config['SESSION_TYPE'] = 'filesystem'
+Session(app) #server side storage config 
 
 
 # return css static files
@@ -49,14 +64,19 @@ def do_choose():
 # select page
 @app.route('/edit', methods=['GET'])
 def do_edit():
-    
+   
+    print(request.args['labelsvg'] ) 
     try:
-        session['labelsvg'] = request.args['labelsvg']
+        if  request.args['labelsvg'] != "":
+            session['labelsvg'] = request.args['labelsvg']
+            return render_template('edit.html')
+        else:
+            return redirect(url_for('do_choose')) #redirect to choose
+
     except Exception as e:
-        if session['labelsvg'] == "":
-            return(str(e))
+        print(str(e))
+        return redirect(url_for('do_choose')) #redirect to choose
     
-    return render_template('edit.html')
 
 # preview page
 @app.route('/preview', methods=['POST'])
@@ -69,6 +89,10 @@ def do_preview():
 
     return render_template('edit.html')
 
+# resize svg according to printer label size
+def svg_resize (srcsvg):
+    destsvg=srcsvg
+    return destsvg
 
 
 
@@ -76,15 +100,32 @@ def do_preview():
 @app.route('/prev_img_svg')
 def send_preview_img():
 	#label template engine
-	session['svglabel'] = render_template("labels/"+session['labelsvg'],txt1 =session['txt1'], txt2 =session['txt2'],txt3 =session['txt3'],txt4 =session['txt4'],)
-	return Response(session['svglabel'],mimetype='image/svg+xml')
+    try:
+        session['svg'] = render_template("labels/"+session['labelsvg'],txt1 =session['txt1'], txt2 =session['txt2'],txt3 =session['txt3'],txt4 =session['txt4'],) #template
+        session['svg'] = svg_resize(session['svg']) #resize svg image
+    except Exception as e:
+        print(str(e))
+    return Response(session['svg'],mimetype='image/svg+xml')
 
-	
-#print image
+# paper forward
+@app.route('/forward', methods=['GET'])
+def do_forward():
+    try:
+        nrpx = int(request.args['nrpx'])                        # read get param and convert to integer
+        svg='<svg width="300" height="'+str(nrpx)+'"></svg>'    # create blank svg according to param
+        svg_to_printer(svg) #sent to printer                    # print that svg
+        return 'ok'
+    except Exception as e:
+        return 'error'
+
+# print image
 @app.route('/print')
 def do_print():
-   
-    #config printer
+    svg_to_printer(session['svg'])
+    return render_template('edit.html')
+
+def svg_to_printer(svg):
+     #config printer
     p = Usb(0x4b43, 0x3538,0 ,0xB2, 0x02  )
     #   lsus
     #   lsusb -vvv -d 4b43:3538"b
@@ -92,13 +133,23 @@ def do_print():
     #   sudo usermod -a -G tty user
     #   sudo usermod -a -G lp user
     #   ls -la /dev/usb/
-
-
-    pngfile = StringIO() #temp file
-    pngbuffer = svg2png(bytestring=session['svglabel'].decode('utf-8').encode('ascii'), dpi=171, write_to=pngfile) #SVG to PNG
+    
+    # escape svg
+    tofile("svg_to_print1.svg",svg)
+    svg = svg.decode('utf-8').encode('ascii') # todo: problem with special char are used, find othern way to do that.
+    tofile("svg_to_print2.svg",svg)
 
     # image = 384 x 175  -- print area =  384 x 154 
+    pngfile = StringIO() #temp file
+    pngbuffer = svg2png(bytestring=svg, dpi=171, write_to=pngfile) #SVG to PNG
+    pngbuffer = svg2png(bytestring=svg, dpi=171, write_to="label.png") #SVG to PNG
     p.image(pngfile) #PNG to printer
 
     return render_template('edit.html')
 
+
+
+def tofile(filename,content):
+    text_file = open(filename, "w")
+    text_file.write(content)
+    text_file.close()
