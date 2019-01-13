@@ -1,6 +1,6 @@
 > Sorry, I do my best, but English is not my mother tongue. Is there somebody helpfull for making text below more readable?
 
-# WebLabel
+# SVG LABEL
 
 You like labelling everything and with you ribbon printer Dymo or or Ptouch? But your are bored of being caught with overpriced proprietary supplies. If yes, grab your freedom with that project.
 

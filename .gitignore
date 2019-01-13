@@ -1,5 +1,8 @@
 *.swp
+*.swo
 *.pyc
 *html.s*
 *.png
 *debug.*
+flask_sessionstore
+

@@ -135,9 +135,9 @@ def svg_to_printer(svg):
     #   ls -la /dev/usb/
     
     # escape svg
-    tofile("svg_to_print1.svg",svg)
+    tofile("svg_to_print1_debug.svg",svg)
     svg = svg.decode('utf-8').encode('ascii') # todo: problem with special char are used, find othern way to do that.
-    tofile("svg_to_print2.svg",svg)
+    tofile("svg_to_print2_debug.svg",svg)
 
     # image = 384 x 175  -- print area =  384 x 154 
     pngfile = StringIO() #temp file
