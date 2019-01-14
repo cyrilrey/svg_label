@@ -24,6 +24,8 @@ Basically you will ,
 - Choose template      [desktop](/doc/Choose.png)    [mobile](/doc/Choose_mobile.png)
 - Edit text            [desktop](/doc/Edit.png)      [mobile](/doc/Edit_mobile.png)
 
+- video [https://youtu.be/tP5t1dhAcaQ] (https://youtu.be/tP5t1dhAcaQ)
+
 ## Prerequisites
 ```
 $ sudo apt-get install python
@@ -80,17 +82,17 @@ $ sudo usermod -a -G lp user
 Work in progress :
 - [x] Achieve function for replacing text within SVG, with jinja2 template engine.
 - [x] Convert SVG into PNG according to printer print width resolution.
-- [ ] Make a small advertising video
+- [x] Make a small advertising video
 
 Short :
 - [ ] Add a menu bare for advanced function and configuration.
-- [ ] Buttons for manual paper alignement. That mean printing a blank image 1px(fine), 5px(normal) or 10px(large) height on button press.
+- [x] Buttons for manual paper alignement. That mean printing a blank image 1px(fine), 5px(normal) or 10px(large) height on button press.
 
 Medium :
+- [ ] Make a better advertising video
 - [ ] Better label size managment. Actually it works, but label height and intervall are "hard coded" within SVG. template.
 - [ ] Printer configuration page. Actually it works, but printer horizontal resolution is "hard coded".
 - [ ] Label roll configuration page and drop down selection.
-- [ ] SVG template création guideline.
 - [ ] SVG upload page.
 
 Long :
