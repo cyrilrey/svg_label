@@ -15,6 +15,7 @@ from flask import (  #web framework
     request,
     session,
     Response,
+    abort
 )
 from flask_sessionstore import Session #server side storage
 import jinja2schema
@@ -70,6 +71,9 @@ def do_index():
 # choose page
 @app.route('/choose')
 def do_choose():
+    if 'labelsvg' in session:
+        del session['labelsvg']
+
     labels = [f for f in os.listdir('templates/labels') if os.path.isfile(os.path.join('templates/labels/', f)) and f.endswith('.svg')] # get svg files
     labels.sort()
     return render_template('choose.html', labels = labels)
@@ -79,8 +83,10 @@ def do_choose():
 @app.route('/edit', methods=['GET'])
 def do_edit():
     try:
-        if request.args['labelsvg'] != "":
+        if 'labelsvg' in request.args:
             session['labelsvg'] = request.args['labelsvg']
+
+        if 'labelsvg' in session:
             return render_edit()
         else:
             return redirect(url_for('do_choose')) #redirect to choose
@@ -170,7 +176,7 @@ def do_forward():
         return 'error'
 
 # print image
-@app.route('/print', methods=["GET", "POST"])
+@app.route('/print', methods=["POST"])
 def do_print():
     load_fields()
     svg_data = render_svg()
@@ -181,13 +187,10 @@ def do_print():
     #svg='<svg width="300" height="'+str(21)+'"></svg>'    # create blank svg according to param
     #svg_to_printer(svg) #sent to printer                    # print that svg
 
-    if request.method == "GET":
-        return render_edit()
-    elif request.method == "POST":
-        if result:
-            return "OK"
-        else:
-            return "ERROR"
+    if result:
+        return redirect(url_for('do_edit'))
+    else:
+        abort(500)
 
 
 def svg_to_printer(svg):
