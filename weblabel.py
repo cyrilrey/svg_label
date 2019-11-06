@@ -19,11 +19,14 @@ from flask import (  #web framework
 from flask_sessionstore import Session #server side storage
 import jinja2schema
 
-from escpos.printer import Usb #printer driver
 from cairosvg import svg2png    #svg to bitmap
 import re #regex for svg modification
 from xml.dom import minidom #for svg modification
 import PIL
+
+from brother_ql.conversion import convert
+from brother_ql.backends.helpers import send
+from brother_ql.raster import BrotherQLRaster
 
 # config (todo)
 '''
@@ -110,7 +113,7 @@ def get_svg_dimensions(srcsvg):
 
     return png.width, png.height
 
-def svg_resize (srcsvg, target_width=384):
+def svg_resize (srcsvg, target_width=696):
     width, height = get_svg_dimensions(srcsvg)
 
     scale = target_width / width
@@ -201,22 +204,18 @@ def svg_to_printer(svg):
     #svg = svg.decode('utf-8').encode('ascii') # todo: problem with special char are used, find othern way to do that.
     tofile("svg_to_print2_debug.svg",svg)
 
-    # image = 384 x 175  -- print area =  384 x 154 
     pngfile = BytesIO() #temp file
     png_data = svg2png(bytestring=svg, write_to=pngfile) #SVG to PNG
-    #pngbuffer = svg2png(bytestring=svg, write_to="label.png") #SVG to PNG  #debug
 
     for try_num in (1, 2, 3):
-        if try_num > 1:
-            time.sleep(1)
-
         try:
-            p = Usb(0x0416, 0x5011, 0, 0x81, 0x01  )
-            p.image(pngfile) #PNG to printer
-            p.text('\n') #flush / feed
-            p.close()
+            printer = BrotherQLRaster('QL-800')
+            printer.exception_on_warning = True
+            instructions = convert(qlr=printer, cut=True, images=[pngfile], label="62", dither=True, dpi_600=False)
+            send(instructions=instructions, printer_identifier='usb://0x04f9:0x209b/000A9Z276036', backend_identifier='pyusb', blocking=True)
         except Exception as exc:
             print("Error printing: %s (try %d)" % (str(exc), try_num))
+            time.sleep(5)
         else:
             return True
 
