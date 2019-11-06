@@ -83,6 +83,7 @@ def do_edit():
             return redirect(url_for('do_choose')) #redirect to choose
 
     except Exception as e:
+        raise
         print(str(e))
         return redirect(url_for('do_choose')) #redirect to choose
 

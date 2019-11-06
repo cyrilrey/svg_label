@@ -5,4 +5,4 @@
 *.png
 *debug.*
 flask_sessionstore
-
+templates/labels/recent*.svg

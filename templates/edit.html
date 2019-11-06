@@ -43,7 +43,7 @@
 				    {% for field in fields %} 
                     <div class="fluid field">
                         <div class="ui labeled input">
-                            <div class="ui label">{{ field }}: </div>     <input class="ui input" type="text" name="{{ field }}" value="{{session.fields[field]}}">	  
+                            <div class="ui label">{{ field }}: </div>     <input class="ui input" type="text" name="{{ field }}" value="{{session.get('fields', {}).get(field, "")}}">	  
                         </div>
                     </div>
                     {% endfor %}
