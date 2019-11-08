@@ -4,6 +4,8 @@
 import os #global
 import time
 from io import BytesIO
+from tempfile import NamedTemporaryFile
+import subprocess
 from flask import (  #web framework
     Flask,
     render_template,
@@ -20,7 +22,6 @@ from flask import (  #web framework
 from flask_sessionstore import Session #server side storage
 import jinja2schema
 
-from cairosvg import svg2png    #svg to bitmap
 import re #regex for svg modification
 from xml.dom import minidom #for svg modification
 import PIL
@@ -29,13 +30,8 @@ from brother_ql.conversion import convert
 from brother_ql.backends.helpers import send
 from brother_ql.raster import BrotherQLRaster
 
-# config (todo)
-'''
-session['print_width']      = 384           # image = 384 x 175  -- print area =  384 x 154 
-session['print_height']     = 154
-session['print_spacing']    = 175-154
-session['print_dpi']        = 171
-'''
+# unit: pixels
+PRINT_WIDTH=696
 
 # app setup
 app = Flask(__name__)
@@ -54,12 +50,23 @@ def send_js(path):
 # return a label svg template from collection 
 @app.route('/svgtemplate/<path:path>')
 def send_label(path):
-    if path.startswith('recent'):
-        cache_timeout = 1
+    is_recent = path.startswith('recent')
+
+    path = os.path.join('templates', 'labels', path)
+    cached_png = path.replace('.svg', '.png')
+    if not os.path.exists(cached_png) or os.path.getmtime(path) > os.path.getmtime(cached_png):
+        with open(path, 'rb') as svg_file:
+            temp_png_file = svg_to_png(svg_file.read())
+
+        with open(cached_png, 'wb') as png_file:
+            png_file.write(temp_png_file.read())
+
+    if is_recent:
+        cache_timeout = 0
     else:
         cache_timeout = 43200
 
-    return send_from_directory('templates/labels', path, cache_timeout=cache_timeout)
+    return send_file(cached_png, cache_timeout=cache_timeout)
 
 
 # index page
@@ -111,33 +118,6 @@ def do_preview():
 
     return render_edit()
 
-def get_svg_dimensions(srcsvg):
-    # the easiest/cleanest way to do it is just convert it to a PNG
-    png_data = BytesIO()
-    svg2png(bytestring=srcsvg, write_to=png_data)
-    png = PIL.Image.open(png_data)
-
-    return png.width, png.height
-
-def svg_resize (srcsvg, target_width=696):
-    width, height = get_svg_dimensions(srcsvg)
-
-    scale = target_width / width
-    new_height = height * scale
-
-    tofile("resize_svg_src_debug.svg",srcsvg) #debug
-    xmldoc = minidom.parseString(srcsvg)
-    svg = xmldoc.getElementsByTagName("svg")[0]
-    svg.setAttribute('width', str(target_width))
-    svg.setAttribute('height', str(int(new_height)))
-
-
-    dstsvg=xmldoc.toxml()
-
-    tofile("resize_svg_dst_debug.svg",dstsvg) #debug
-
-    return dstsvg
-
 def render_edit():
     return render_template('edit.html', fields=get_label_template_vars())
 
@@ -152,7 +132,6 @@ def render_svg():
     fields = session.get('fields', {})
     label_svg = session.get('labelsvg') or request.args.get('labelsvg', '')
     svg_data = render_template("labels/" + label_svg, **fields)
-    svg_data = svg_resize(svg_data, 384) #resize svg image
 
     return svg_data
 
@@ -161,8 +140,9 @@ def render_svg():
 def send_preview_img():
 	#label template engine
     svg_data = render_svg()
+    png_file = svg_to_png(svg_data)
 
-    return Response(svg_data, mimetype='image/svg+xml')
+    return send_file(png_file, mimetype='image/png', cache_timeout=0)
 
 # paper forward
 @app.route('/forward', methods=['GET'])
@@ -193,6 +173,23 @@ def do_print():
         abort(500)
 
 
+def svg_to_png(svg_data):
+    if not isinstance(svg_data, bytes):
+        svg_data = svg_data.encode('utf-8')
+
+    svg_file = NamedTemporaryFile(suffix='.svg')
+    svg_file.write(svg_data)
+    svg_file.flush()
+
+    png_file = NamedTemporaryFile(suffix='.png')
+
+    subprocess.check_call("inkscape --without-gui --export-png=%s --export-width=%d %s" %
+                            (png_file.name, PRINT_WIDTH, svg_file.name),
+                          shell=True)
+
+    return png_file
+
+
 def svg_to_printer(svg):
      #config printer
     #   lsus
@@ -207,14 +204,13 @@ def svg_to_printer(svg):
     #svg = svg.decode('utf-8').encode('ascii') # todo: problem with special char are used, find othern way to do that.
     tofile("svg_to_print2_debug.svg",svg)
 
-    pngfile = BytesIO() #temp file
-    png_data = svg2png(bytestring=svg, write_to=pngfile) #SVG to PNG
+    png_file = svg_to_png(svg)
 
     for try_num in (1, 2, 3):
         try:
             printer = BrotherQLRaster('QL-800')
             printer.exception_on_warning = True
-            instructions = convert(qlr=printer, cut=True, images=[pngfile], label="62", dither=True, dpi_600=False)
+            instructions = convert(qlr=printer, cut=True, images=[png_file], label="62", dither=True, dpi_600=False)
             send(instructions=instructions, printer_identifier='usb://0x04f9:0x209b/000A9Z276036', backend_identifier='pyusb', blocking=True)
         except Exception as exc:
             print("Error printing: %s (try %d)" % (str(exc), try_num))
