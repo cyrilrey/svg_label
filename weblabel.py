@@ -187,7 +187,16 @@ def svg_to_png(svg_data):
                             (png_file.name, PRINT_WIDTH, svg_file.name),
                           shell=True)
 
+    trim_whitespace(png_file.name)
+
     return png_file
+
+
+def trim_whitespace(png_path):
+    png = PIL.Image.open(png_path)
+    x, y, width, height = png.getbbox()
+    png = png.crop((0, y, png.width, height))
+    png.save(png_path)
 
 
 def svg_to_printer(svg):
