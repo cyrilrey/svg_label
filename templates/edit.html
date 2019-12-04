@@ -40,32 +40,13 @@
 				  <!--button class="ui button" >clear</button-->
 
 				<form class="ui big form" action="preview" method="post">
-				    
+				    {% for field in fields %} 
                     <div class="fluid field">
                         <div class="ui labeled input">
-                            <div class="ui label">txt1 : </div>     <input class="ui input" type="text" name="txt1" value="{{session['txt1']}}">	  
+                            <div class="ui label">{{ field }}: </div>     <input class="ui input" type="text" name="{{ field }}" value="{{session.get('fields', {}).get(field, "")}}">	  
                         </div>
                     </div>
-                    
-                    <div class="fluid field">
-                        <div class="ui labeled input">
-                            <div class="ui label">txt2 : </div>     <input class="ui input" type="text" name="txt2" value="{{session['txt2']}}">	  
-                        </div>
-                    </div>
- 
-									
-                    <div class="fluid field">
-                        <div class="ui labeled input">
-                            <div class="ui label">txt3 : </div>     <input class="ui input" type="text" name="txt3" value="{{session['txt3']}}">	  
-                        </div>
-                    </div>
-
-
-                    <div class="fluid field">
-                        <div class="ui labeled input">
-                            <div class="ui label">txt4 : </div>     <input class="ui input" type="text" name="txt4" value="{{session['txt4']}}">	  
-                        </div>
-                    </div>
+                    {% endfor %}
 				
 					  <button class="ui left attached button"><i class="backward icon"></i>Back</button>
 					  <button class="ui right attached button"><i class="undo icon"></i>Cancel</button>
@@ -86,9 +67,9 @@
                         <img src="prev_img_svg" class="ui fluid bordered rounded image" alt="preview">
                      </a>	
                      <br>
-                      <a href="print">
+                      <form action="print" method="POST">
 					    <button class="ui big right floated black button" type="submit"><i class="print icon"></i></button>
-                      </a>
+                      </form>
 
 			</div>
 		</div>
@@ -106,6 +87,7 @@
 			Text 2 = {{session['txt2']}}<br>
 			Text 3 = {{session['txt3']}}<br>
 			Text 4 = {{session['txt4']}}<br>
+            Fields = {{ fields }}<br>
 			</div>
 		
 		</div>

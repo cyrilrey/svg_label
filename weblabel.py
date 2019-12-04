@@ -2,7 +2,10 @@
 
 #import
 import os #global
-from StringIO import StringIO #some kind of temp file storage
+import time
+from io import BytesIO
+from tempfile import NamedTemporaryFile
+import subprocess
 from flask import (  #web framework
     Flask,
     render_template,
@@ -14,21 +17,21 @@ from flask import (  #web framework
     request,
     session,
     Response,
+    abort
 )
 from flask_sessionstore import Session #server side storage
-from escpos.printer import Usb #printer driver
-from cairosvg import svg2png    #svg to bitmap
+import jinja2schema
+
 import re #regex for svg modification
 from xml.dom import minidom #for svg modification
+import PIL
 
+from brother_ql.conversion import convert
+from brother_ql.backends.helpers import send
+from brother_ql.raster import BrotherQLRaster
 
-# config (todo)
-'''
-session['print_width']      = 384           # image = 384 x 175  -- print area =  384 x 154 
-session['print_height']     = 154
-session['print_spacing']    = 175-154
-session['print_dpi']        = 171
-'''
+# unit: pixels
+PRINT_WIDTH=696
 
 # app setup
 app = Flask(__name__)
@@ -47,7 +50,23 @@ def send_js(path):
 # return a label svg template from collection 
 @app.route('/svgtemplate/<path:path>')
 def send_label(path):
-    return send_from_directory('templates/labels', path)
+    is_recent = path.startswith('recent')
+
+    path = os.path.join('templates', 'labels', path)
+    cached_png = path.replace('.svg', '.png')
+    if not os.path.exists(cached_png) or os.path.getmtime(path) > os.path.getmtime(cached_png):
+        with open(path, 'rb') as svg_file:
+            temp_png_file = svg_to_png(svg_file.read())
+
+        with open(cached_png, 'wb') as png_file:
+            png_file.write(temp_png_file.read())
+
+    if is_recent:
+        cache_timeout = 0
+    else:
+        cache_timeout = 43200
+
+    return send_file(cached_png, cache_timeout=cache_timeout)
 
 
 # index page
@@ -59,65 +78,71 @@ def do_index():
 # choose page
 @app.route('/choose')
 def do_choose():
+    if 'labelsvg' in session:
+        del session['labelsvg']
+
     labels = [f for f in os.listdir('templates/labels') if os.path.isfile(os.path.join('templates/labels/', f)) and f.endswith('.svg')] # get svg files
+    labels.sort()
     return render_template('choose.html', labels = labels)
 
 # select page
+
 @app.route('/edit', methods=['GET'])
 def do_edit():
-   
     try:
-        if  request.args['labelsvg'] != "":
+        if 'labelsvg' in request.args:
             session['labelsvg'] = request.args['labelsvg']
-            return render_template('edit.html')
+
+        if 'labelsvg' in session:
+            return render_edit()
         else:
             return redirect(url_for('do_choose')) #redirect to choose
 
     except Exception as e:
+        raise
         print(str(e))
         return redirect(url_for('do_choose')) #redirect to choose
-    
+
+
+def load_fields():
+    if 'fields' not in session:
+        session['fields'] = {}
+
+    session['fields'].update(request.form)
+
 
 # preview page
 @app.route('/preview', methods=['POST'])
 def do_preview():
+    load_fields()
 
-    session['txt1'] = request.form['txt1']
-    session['txt2'] = request.form['txt2']
-    session['txt3'] = request.form['txt3']
-    session['txt4'] = request.form['txt4']
+    return render_edit()
 
-    return render_template('edit.html')
+def render_edit():
+    return render_template('edit.html', fields=get_label_template_vars())
 
-# resize svg according to printer label size
-def svg_resize (srcsvg, w, h, preserveAspectRatio):
+def get_label_template_vars():
+    with open("templates/labels/" + session['labelsvg']) as template_file:
+        fields = list(sorted(jinja2schema.infer(template_file.read()).keys()))
 
-    tofile("resize_svg_src_debug.svg",srcsvg) #debug
-    xmldoc = minidom.parseString(srcsvg)
-    svg = xmldoc.getElementsByTagName("svg")[0]
-    svg.setAttribute('width', str(int(w)))
-    svg.setAttribute('height', str(int(h)))
-    svg.setAttribute('preserveAspectRatio', preserveAspectRatio)
-
-
-    dstsvg=xmldoc.toxml()
-
-    tofile("resize_svg_dst_debug.svg",dstsvg) #debug
-    
-    return dstsvg
-
-
+    return fields
 
 # return svg image
+def render_svg():
+    fields = session.get('fields', {})
+    label_svg = session.get('labelsvg') or request.args.get('labelsvg', '')
+    svg_data = render_template("labels/" + label_svg, **fields)
+
+    return svg_data
+
+
 @app.route('/prev_img_svg')
 def send_preview_img():
 	#label template engine
-    try:
-        session['svg'] = render_template("labels/"+session['labelsvg'],txt1 =session['txt1'], txt2 =session['txt2'],txt3 =session['txt3'],txt4 =session['txt4'],) #template
-        session['svg'] = svg_resize(session['svg'], 384, 154, "xMidYMid meet" ) #resize svg image
-    except Exception as e:
-        print(str(e))
-    return Response(session['svg'],mimetype='image/svg+xml')
+    svg_data = render_svg()
+    png_file = svg_to_png(svg_data)
+
+    return send_file(png_file, mimetype='image/png', cache_timeout=0)
 
 # paper forward
 @app.route('/forward', methods=['GET'])
@@ -131,41 +156,94 @@ def do_forward():
         return 'error'
 
 # print image
-@app.route('/print')
+@app.route('/print', methods=["POST"])
 def do_print():
-    #print label :
-    svg_to_printer(session['svg'])
-    #print spacing :
-    svg='<svg width="300" height="'+str(21)+'"></svg>'    # create blank svg according to param
-    svg_to_printer(svg) #sent to printer                    # print that svg
+    load_fields()
+    svg_data = render_svg()
+    save_recent(svg_data)
+    result = svg_to_printer(svg_data)
 
-    return render_template('edit.html')
+    #print spacing :
+    #svg='<svg width="300" height="'+str(21)+'"></svg>'    # create blank svg according to param
+    #svg_to_printer(svg) #sent to printer                    # print that svg
+
+    if result:
+        return redirect(url_for('do_edit'))
+    else:
+        abort(500)
+
+
+def svg_to_png(svg_data):
+    if not isinstance(svg_data, bytes):
+        svg_data = svg_data.encode('utf-8')
+
+    svg_file = NamedTemporaryFile(suffix='.svg')
+    svg_file.write(svg_data)
+    svg_file.flush()
+
+    png_file = NamedTemporaryFile(suffix='.png')
+
+    subprocess.check_call("inkscape --without-gui --export-png=%s --export-width=%d %s" %
+                            (png_file.name, PRINT_WIDTH, svg_file.name),
+                          shell=True)
+
+    trim_whitespace(png_file.name)
+
+    return png_file
+
+
+def trim_whitespace(png_path):
+    png = PIL.Image.open(png_path)
+    bbox = png.getbbox()
+
+    # bbox can be None for a fully transparent image, like if they haven't
+    # filled in the template variables yet
+    if bbox is not None:
+        x, y, width, height = bbox
+        png = png.crop((0, y, png.width, height))
+        png.save(png_path)
 
 
 def svg_to_printer(svg):
      #config printer
-    p = Usb(0x4b43, 0x3538,0 ,0xB2, 0x02  )
     #   lsus
     #   lsusb -vvv -d 4b43:3538"b
     #   sudo usermod -a -G dialout user
     #   sudo usermod -a -G tty user
     #   sudo usermod -a -G lp user
     #   ls -la /dev/usb/
-    
+
     # escape svg
     tofile("svg_to_print1_debug.svg",svg)
-    svg = svg.decode('utf-8').encode('ascii') # todo: problem with special char are used, find othern way to do that.
+    #svg = svg.decode('utf-8').encode('ascii') # todo: problem with special char are used, find othern way to do that.
     tofile("svg_to_print2_debug.svg",svg)
 
-    # image = 384 x 175  -- print area =  384 x 154 
-    pngfile = StringIO() #temp file
-    pngbuffer = svg2png(bytestring=svg, write_to=pngfile) #SVG to PNG
-    #pngbuffer = svg2png(bytestring=svg, write_to="label.png") #SVG to PNG  #debug
-    p.image(pngfile) #PNG to printer
+    png_file = svg_to_png(svg)
 
-    return render_template('edit.html')
+    for try_num in (1, 2, 3):
+        try:
+            printer = BrotherQLRaster('QL-800')
+            printer.exception_on_warning = True
+            instructions = convert(qlr=printer, cut=True, images=[png_file], label="62", dither=True, dpi_600=False)
+            send(instructions=instructions, printer_identifier='usb://0x04f9:0x209b/000A9Z276036', backend_identifier='pyusb', blocking=True)
+        except Exception as exc:
+            print("Error printing: %s (try %d)" % (str(exc), try_num))
+            time.sleep(5)
+        else:
+            return True
+
+    return False
 
 
+def save_recent(svg_data):
+    for i in range(9, 0, -1):
+        from_file = "templates/labels/recent%d.svg" % i
+        to_file = "templates/labels/recent%d.svg" % (i + 1)
+
+        if os.path.exists(from_file):
+            os.rename(from_file, to_file)
+
+    tofile(from_file, svg_data)
 
 def tofile(filename,content):
     text_file = open(filename, "w")

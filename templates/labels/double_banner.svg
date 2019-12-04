@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1.88976in"
+   height="60in"
+   viewBox="0 0 383.99984 12192.019"
+   version="1.1"
+   id="svg19566"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   sodipodi:docname="double_banner.svg"
+   inkscape:export-filename="/home/lex/Documents/thermal printer/label.png"
+   inkscape:export-xdpi="203.55556"
+   inkscape:export-ydpi="203.55556">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.28"
+     inkscape:cx="60.50358"
+     inkscape:cy="5488.704"
+     inkscape:document-units="px"
+     showgrid="false"
+     units="in"
+     scale-x="8"
+     inkscape:measure-start="-20.3125,767.188"
+     inkscape:measure-end="-20.3125,342.188"
+     inkscape:current-layer="layer2"
+     inkscape:snap-global="false"
+     showguides="true"
+     inkscape:guide-bbox="true" />
+  <defs
+     id="defs19561" />
+  <metadata
+     id="metadata19564">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     transform="translate(0,11379.218)">
+    <text
+       xml:space="preserve"
+       id="text30372"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:135.46687317px;line-height:100%;font-family:sans-serif;-inkscape-font-specification:sans-serif;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.83710337;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3.83710319, 3.83710319;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       transform="rotate(90)"
+       x="-11343.316"
+       y="-231.60135"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:135.46687317px;line-height:100%;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:3.83710337"
+         y="-231.60135"
+         x="-11343.316"
+         sodipodi:role="line"
+         id="tspan30370">{{line1}}</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text30372-3"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:135.46687317px;line-height:100%;font-family:sans-serif;-inkscape-font-specification:sans-serif;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;opacity:1;vector-effect:none;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:3.83710337;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:3.83710321, 3.83710321;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       transform="rotate(90)"
+       x="-11343.316"
+       y="-87.667831"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:135.46687317px;line-height:100%;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:3.83710337"
+         y="-87.667831"
+         x="-11343.316"
+         sodipodi:role="line"
+         id="tspan30370-6">{{line2}}</tspan></text>
+  </g>
+</svg>
