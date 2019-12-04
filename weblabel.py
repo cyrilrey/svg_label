@@ -194,9 +194,14 @@ def svg_to_png(svg_data):
 
 def trim_whitespace(png_path):
     png = PIL.Image.open(png_path)
-    x, y, width, height = png.getbbox()
-    png = png.crop((0, y, png.width, height))
-    png.save(png_path)
+    bbox = png.getbbox()
+
+    # bbox can be None for a fully transparent image, like if they haven't
+    # filled in the template variables yet
+    if bbox is not None:
+        x, y, width, height = bbox
+        png = png.crop((0, y, png.width, height))
+        png.save(png_path)
 
 
 def svg_to_printer(svg):
